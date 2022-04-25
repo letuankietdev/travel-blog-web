@@ -11,6 +11,7 @@ import FeedBlock from "./feedBlog";
 
 import {FEED_DATA} from "fakeData";
 import ChatList from "components/chatList";
+import BoxChat from "components/boxChat";
 
 
 function HomePage(props) {
@@ -43,6 +44,7 @@ function HomePage(props) {
           <ChatList dataChatList={DATA_CHAT_LIST} />
         </Grid>
       </Grid>
+      <BoxChat />
     </div>
   );
 }

@@ -28,11 +28,13 @@ const styledThemed = makeStyles({
     color:'#bbb',
     fontWeight: 300,
     fontSize: 12,
+    cursor:'pointer',
   },
   infoName:{
     color:'#ddd',
     fontWeight: 500,
     fontSize: 14,
+    cursor:'pointer',
   },
   imageFeed: {
     width: '100%',
@@ -70,12 +72,14 @@ const styledThemed = makeStyles({
     fontSize: 12,
     marginLeft:5,
     fontWeight: 300,
+    cursor:'pointer',
   },
   textLove: {
     color: "#ccc",
     fontSize:12,
     fontWeight: 300,
     marginTop: 4,
+    cursor:'pointer',
   }
 });
 
