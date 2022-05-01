@@ -27,5 +27,5 @@ function HeaderBoxChat ({
   )
 }
 
-export default HeaderBoxChat;
+export default React.memo(HeaderBoxChat);
 

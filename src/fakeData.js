@@ -50,13 +50,30 @@ function createChatData () {
   return data;
 }
 
+function createDataChatRoom () {
+  let data = [];
+  for(var i = 0; i<= 20; i++ ){
+    data.push({
+      id: i+1,
+      isPartner: i % 2 ? true : false,
+      content: faker.lorem.paragraph(),
+      image: i  % 5 ? faker.image.food() : null,
+      video: null,
+    })
+  }
+  return data;
+}
+
 const FEED_DATA = createDataFeed();
 
 const STORY_DATA = createData();
 
 const DATA_CHAT_LIST =  createChatData();
+
+const FAKE_DATA_ROOM_CHAT = createDataChatRoom();
 export {
   STORY_DATA,
   FEED_DATA,
   DATA_CHAT_LIST,
+  FAKE_DATA_ROOM_CHAT,
 }
