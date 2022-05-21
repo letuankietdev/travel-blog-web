@@ -14,17 +14,21 @@ const themedStyle = makeStyles((theme) => ({
     height: '100vh',
     width:'100%',
     zIndex: 9999,
-
   },
   paperLogin: {
     padding: theme.spacing(2),
-    width: '100%',
+    width: '90%',
     backgroundColor: '#ffffff',
     zIndex:9999,
+    display: 'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    alignContent:'center',
+    flexDirection:'column'
   },
   inputLogin: {
     width:'100%',
-    marginTop: 16,
+    marginTop: '16px !important',
   },
   divButtonLogin: {
     display: 'flex',
@@ -101,6 +105,18 @@ const themedStyle = makeStyles((theme) => ({
   },
   particles: {
     position: 'fixed',
+  },
+  slideLoginPageSection: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
+  },
+  slideLoginPageSectionMobile:{
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   }
 }))
 

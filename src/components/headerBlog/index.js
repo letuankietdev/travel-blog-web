@@ -44,7 +44,7 @@ export default function HeaderBlog() {
   };
 
   const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
+    setMobileMoreAnchorEl(!mobileMoreAnchorEl ? event.currentTarget : null);
   };
 
   const menuId = "primary-search-account-menu";
@@ -59,6 +59,7 @@ export default function HeaderBlog() {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      style={{top:35}}
     >
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">

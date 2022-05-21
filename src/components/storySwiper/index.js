@@ -33,7 +33,6 @@ function StorySwiper ({
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={10}
       slidesPerView={totalSlide}
-      onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
       {data.map((item, index) => {
