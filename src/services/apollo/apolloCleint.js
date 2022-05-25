@@ -4,6 +4,7 @@ import {
 import { onError } from '@apollo/client/link/error';
 import { setContext } from '@apollo/client/link/context';
 import _ from 'lodash';
+import toastr from 'toastr';
 
 const { localStorage } = global.window;
 
@@ -38,12 +39,22 @@ const createClient = async (isUsingCache = false, isNotShowDisconnect = false) =
         }) => {
           if (graphQLErrors) {
             _.map(graphQLErrors, ({ message, extensions }) => {
+
               if (_.includes(message, '403') || _.includes(message, '400') || extensions.code === 'UNAUTHENTICATED') {
-                
+                toastr.warning(message, 'Request Failure', {
+                  progressBar: false,
+                  positionClass: 'toast-bottom-left',
+                  preventDuplicates: true,
+                })
               }
             });
           } else if (networkError) {
             console.log('networkError', networkError)
+            toastr.warning("the server responded with a status of 404", 'Request Failure', {
+              progressBar: false,
+              positionClass: 'toast-bottom-left',
+              preventDuplicates: true,
+            })
           }
         }),
         new HttpLink({

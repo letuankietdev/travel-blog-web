@@ -24,7 +24,7 @@ function LoginForm () {
   const handleLogin = async (values) => {
     console.log('value', values);
     setLoading(true);
-    handleRequestLogin(values);
+    handleRequestLogin(values, navigation,() => {setLoading(false)});
   }
 
   const handleOnErrorSubmit = (errors) => {
