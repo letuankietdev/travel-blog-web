@@ -7,8 +7,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   const {type} = action;
+  console.log('qweqweqweqweqwe', type);
   switch(type) {
     case APP_SET_AUTH:
+      console.log('12312312313123', Object.assign({}, state, {
+        auth: action.payload
+      }))
       return Object.assign({}, state, {
         auth: action.payload
       });

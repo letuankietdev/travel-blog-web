@@ -1,37 +1,20 @@
 import { useTheme } from '@material-ui/core';
-import LoginScreen from 'modules/login';
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes as Switch } from "react-router-dom";
-import { RouteMain } from './routes';
-import themedStyle from './styles';
+import React, { useEffect, useMemo, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes as Switch, Navigate, useNavigate, Routes } from "react-router-dom";
+import MainRouter from './MainRouter';
 
 
 
 function AppRoot () {
+  const [authented, setAuthented] = useState(null)
   
-  const classes = themedStyle();
-  const theme = useTheme();
-  
-
+  const isAuthenticated = useMemo(() => {
+    setAuthented(window?.localStorage?.token || false)
+    return window?.localStorage?.token || false
+  }, [window?.localStorage?.token])
   return (
     <Router basename=''>
-      <Switch>
-        <Route
-          path='/'
-          element={<LoginScreen />}
-        />
-        {
-          RouteMain.map((item, index) => {
-            return (
-              <Route 
-                path={item.path}
-                key={index+ item.nameScreen}
-                element={item.element}
-              />
-            )
-          })
-        }
-      </Switch>
+      <MainRouter authenticated ={isAuthenticated || authented}/>
     </Router>
   )
 

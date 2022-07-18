@@ -1,5 +1,6 @@
 import { Avatar, Paper } from '@material-ui/core';
 import React from 'react';
+import ModalCreateFeed from './modalCreateFeed';
 
 import styledThemed from './styles';
 
@@ -21,6 +22,7 @@ function CreateFeed ({
         </div>
         
       </Paper>
+      <ModalCreateFeed />
     </div>
   )
 

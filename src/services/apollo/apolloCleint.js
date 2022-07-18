@@ -25,7 +25,7 @@ const createClient = async (isUsingCache = false, isNotShowDisconnect = false) =
   const authLink = setContext((_, { headers }) => ({
     headers: {
       ...headers,
-      Authorization: token,
+      Authorization: 'Bearer ' +token,
       'Access-Control-Allow-Origin': "*",
       "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS"
       // 'access-token': token,
@@ -58,7 +58,7 @@ const createClient = async (isUsingCache = false, isNotShowDisconnect = false) =
           }
         }),
         new HttpLink({
-          uri: 'http://172.16.0.229:3000/graphql',
+          uri: 'http://172.16.0.89:3000/graphql',
           credentials: 'same-origin',
         }),
       ]),

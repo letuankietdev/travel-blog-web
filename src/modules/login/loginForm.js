@@ -8,11 +8,12 @@ import { defaultValueOptionLogin, formLoginSchema } from './helper';
 import InputForm from 'components/InputForm';
 import { useState } from 'react';
 import { handleRequestLogin } from './handler';
+import { useDispatch } from 'react-redux';
 
 function LoginForm () {
   const classes = themedStyle();
   const navigation = useNavigate();
-
+  const dispatch = useDispatch();
   const [isLoading, setLoading] = useState(false)
 
   const formLogin = useForm({
@@ -24,7 +25,9 @@ function LoginForm () {
   const handleLogin = async (values) => {
     console.log('value', values);
     setLoading(true);
-    handleRequestLogin(values, navigation,() => {setLoading(false)});
+    handleRequestLogin(values, navigation, () => {
+      setLoading(false)
+    }, dispatch);
   }
 
   const handleOnErrorSubmit = (errors) => {

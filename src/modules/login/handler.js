@@ -2,8 +2,10 @@ import createClient from "services/apollo/apolloCleint";
 import LOGIN_MUTATION from "services/apollo/mutations/login";
 import { getOS } from "utils";
 import toastr from 'toastr';
+import auth from "utils/auth";
+import { appSetAuth } from "modules/App/actions";
 
-export const handleRequestLogin = async (values, navigation, callback) => {
+export const handleRequestLogin = async (values, navigation, callback, dispatch) => {
   try{
     const input = {
       userName: values.username,
@@ -19,7 +21,11 @@ export const handleRequestLogin = async (values, navigation, callback) => {
     })
     console.log('resultLogin', resultLogin);
     if(resultLogin?.data?.userLogin?.isSuccess && resultLogin?.data?.userLogin?.auth){
-      navigation('/home')
+      auth.setToken(resultLogin.data.userLogin.auth.token);
+      dispatch(appSetAuth({
+        token: resultLogin.data.userLogin.auth.token
+      }))
+      // navigation('/home')
     }else {
       const message = resultLogin?.data?.userLogin?.message || 'Login Failed, Pls try again!';
       toastr.warning(message, 'Login Failure', {

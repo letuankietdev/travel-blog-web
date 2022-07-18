@@ -35,9 +35,9 @@ function HomePage(props) {
           <ChatList dataChatList={DATA_CHAT_LIST} />
         </Grid>
       </Grid>
-      <div className={classes.sectionDesktop}>
+      {/* <div className={classes.sectionDesktop}>
         <BoxChat />
-      </div>
+      </div> */}
       
     </div>
   );

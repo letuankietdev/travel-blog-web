@@ -7,6 +7,11 @@ export const RouteMain = [
     nameScreen: "Home Page",
     path: "/home",
     element: <HomePage />, 
+  },
+  {
+    nameScreen: "Home Page",
+    path: "/",
+    element: <HomePage />, 
   }
 ]
 
