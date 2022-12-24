@@ -1,4 +1,3 @@
-import { Avatar, Paper } from '@material-ui/core';
 import React from 'react';
 import ModalCreateFeed from './modalCreateFeed';
 
@@ -13,15 +12,7 @@ function CreateFeed ({
 
   return (
     <div className={classes.container}>
-      <Paper className={classes.paperCreate}>
-        <div className={classes.viewInput}>
-          <Avatar />
-          <div className={classes.viewEnterInput}>
-            How do you feel today?
-          </div>
-        </div>
-        
-      </Paper>
+      
       <ModalCreateFeed />
     </div>
   )

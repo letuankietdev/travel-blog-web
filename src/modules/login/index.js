@@ -2,7 +2,6 @@ import { Grid } from "@material-ui/core";
 import React from "react";
 import LoginForm from "./loginForm";
 import SlideLoginPage from "./slideLoginPage";
-import Particles from "react-tsparticles";
 import themedStyle from "./styles";
 import AnimationParticles from "./animationParticles";
 

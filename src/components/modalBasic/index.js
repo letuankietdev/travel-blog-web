@@ -3,31 +3,16 @@ import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
 import { useStyles } from './styles';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
 const ModalBasic = forwardRef(({
   ariaLabelledby,
   ariaDescribedby,
   renderHeaderModal,
   renderBodyModal,
   renderFooterModal,
+  disableOnCloseOutSide
 }, ref) => {
   const classes = useStyles();
-  const [modalStyle] = useState(getModalStyle);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClose = useCallback(() => {
     setOpen(false)
@@ -43,24 +28,28 @@ const ModalBasic = forwardRef(({
   function renderBody (){
     return (
       <div  className={classes.paper}>
-        Modal 
+        {renderHeaderModal ?  renderHeaderModal() : null}
+        {renderBodyModal ? renderBodyModal() : null} 
+        {renderFooterModal ? renderFooterModal() : null}
       </div>
     )
   }
-
   
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={disableOnCloseOutSide ? ()=> {} : handleClose}
         aria-labelledby={ariaLabelledby || "simple-modal-title"}
         aria-describedby={ariaDescribedby || "simple-modal-description"}
+        style={{
+          display:'flex',
+          justifyContent:'center',
+          alignItems:'center'
+        }}
+        
       >
-        {renderBody()}
-        {/* {renderHeaderModal?.()}
-        {renderBodyModal?.()}
-        {renderFooterModal?.()} */}
+        {renderBody()}  
       </Modal>
     </div>
   )
